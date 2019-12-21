@@ -423,8 +423,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         /* Create SKNode crossPair for packing the whole obstacle, create rotation, 
          create obstacle texture, set obstacle position */
         crossGroup = SKNode()
-        let rotation = SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(M_PI), duration:4))
-        let rotationC = SKAction.repeatForever(SKAction.rotate(byAngle: -CGFloat(M_PI), duration:4))
+        let rotation = SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration:4))
+        let rotationC = SKAction.repeatForever(SKAction.rotate(byAngle: -CGFloat(Double.pi), duration:4))
         rotatingCrossTexture = SKTexture(imageNamed: "RotatingCross")
         
         /* Create left rotating cross */
@@ -565,7 +565,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
         /* Set motion */
         let distance = self.frame.width * 1.2
-        let radian = (CGFloat(M_PI) * 0.5) + atan2(self.frame.size.height * 0.25, distance)
+        let radian = (CGFloat(Double.pi) * 0.5) + atan2(self.frame.size.height * 0.25, distance)
         let rotateRight = SKAction.rotate(toAngle: radian, duration: TimeInterval(0))
         let rotateLeft = SKAction.rotate(toAngle: -radian, duration: TimeInterval(0))
         let leftToRight = SKAction.moveBy(x: distance, y: self.frame.size.height * 0.25, duration: TimeInterval(0.0035 * distance))
@@ -1026,7 +1026,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         else { gameOver() }
     }
     
-    func pauseGame() {
+    @objc func pauseGame() {
         
         /* This function may pass to AppDelegate, when application resign, so it must ensure false pauseEd, not yet GameOver, already first tap to prevent duplicate call of pauseGame() or error, pauseEd set to true to show pauseLabel */
         if !pauseEd && !gameOverEd && !firstTap {

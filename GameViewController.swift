@@ -69,12 +69,12 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
         self.interstitialAd = reloadInterstitialAd()
     }
     
-    func showBanner() {
+    @objc func showBanner() {
         
         bannerView.load(GADRequest())
     }
     
-    func showInterstitialAd() {
+    @objc func showInterstitialAd() {
         
         if interstitialAd.isReady {
             interstitialAd.present(fromRootViewController: self)
